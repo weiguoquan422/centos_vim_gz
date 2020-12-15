@@ -11,6 +11,8 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 "make Vim default to Unix line endings while still supporting DOS line endings
 set fileformats=unix,dos
 set fileformat=unix
+"dont change directory when open a file
+set noautochdir
 
 
 "about search and display
@@ -39,12 +41,16 @@ set mouse=a
 "<Leader> is ';'
 let mapleader=";"
 "map: copy to clipboard
-vnoremap <Leader>y "+y
+nmap <Leader>y "+y :let @*=@+<CR>h
+vmap <Leader>y "+y :let @*=@+<CR>h
 "map: paste from clipboard
 nmap <Leader>p "+p
+vmap <Leader>p "+p
 "alt+right/left to move between buffers
 nmap <A-right> <Esc>:bn<CR>
 nmap <A-left> <Esc>:bp<CR>
+"search for visually selected text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "close current buffer
 function! Close_current_buf()
@@ -63,6 +69,8 @@ nmap <Leader>bd :call Close_current_buf()<CR>
 nmap <Leader>wv <Esc>:vs<CR>
 "close current window
 nmap <Leader>wd <Esc>:q<CR>
+"search for word under the cursor but not jump next match
+nnoremap * :keepjumps normal! mi*`i<CR>
 
 
 
@@ -116,6 +124,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 "vim-SystemVerilog
 Plug 'WeiChungWu/vim-SystemVerilog'
+"CtrlP
+Plug 'ctrlpvim/ctrlp.vim'
 
 
 " Initialize plugin system
@@ -157,6 +167,51 @@ let g:NERDAltDelims_c = 1
 let g:startify_change_to_dir = 0
 
 
+"CtrlP
+"ctrlpline
+nmap <leader>sf :CtrlPLine<CR>
+"Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"chang mapping to invoke CtrlP
+let g:ctrlp_map = '<leader>ff'
+"Use this to customize the mappings inside CtrlP's prompt to your liking. You only need to keep the lines that you've changed the values (inside []) 
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtBS()':              ['<bs>', '<c-]>'],
+  \ 'PrtDelete()':          ['<del>'],
+  \ 'PrtDeleteWord()':      ['<c-w>'],
+  \ 'PrtClear()':           ['<c-u>'],
+  \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+  \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+  \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+  \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+  \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+  \ 'PrtHistory(-1)':       ['<c-n>'],
+  \ 'PrtHistory(1)':        ['<c-p>'],
+  \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+  \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+  \ 'AcceptSelection("t")': ['<c-t>'],
+  \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+  \ 'ToggleFocus()':        ['<s-tab>'],
+  \ 'ToggleRegex()':        ['<c-r>'],
+  \ 'ToggleByFname()':      ['<c-d>'],
+  \ 'ToggleType(1)':        ['<c-f>', '<c-up>'],
+  \ 'ToggleType(-1)':       ['<c-b>', '<c-down>'],
+  \ 'PrtExpandDir()':       ['<tab>'],
+  \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+  \ 'PrtInsert()':          ['<c-\>'],
+  \ 'PrtCurStart()':        ['<c-a>'],
+  \ 'PrtCurEnd()':          ['<c-e>'],
+  \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+  \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+  \ 'PrtClearCache()':      ['<F5>'],
+  \ 'PrtDeleteEnt()':       ['<F7>'],
+  \ 'CreateNewFile()':      ['<c-y>'],
+  \ 'MarkToOpen()':         ['<c-z>'],
+  \ 'OpenMulti()':          ['<c-o>'],
+  \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+  \ }
+
 
 "color scheme
 colorscheme gruvbox
@@ -171,4 +226,3 @@ syntax enable
 set foldmethod=syntax
 "Close the folding code when you start vim
 set nofoldenable
-
