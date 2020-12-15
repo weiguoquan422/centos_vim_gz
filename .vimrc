@@ -174,7 +174,7 @@ nmap <leader>sf :CtrlPLine<CR>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 "chang mapping to invoke CtrlP
 let g:ctrlp_map = '<leader>ff'
-"sets its local working directory
+"ctrlp dont change dir when open a file
 let g:ctrlp_working_path_mode = 'w'
 "Use this to customize the mappings inside CtrlP's prompt to your liking. You only need to keep the lines that you've changed the values (inside []) 
 let g:ctrlp_prompt_mappings = {
