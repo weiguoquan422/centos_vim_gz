@@ -53,17 +53,7 @@ nmap <A-left> <Esc>:bp<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "close current buffer
-function! Close_current_buf()
-    let buffer_num=len(getbufinfo({'buflisted':1}))
-    if buffer_num>1
-        :bp|bd #
-    else
-        :bd
-    endif
-    return buffer_num
-endfunction
-
-nmap <Leader>bd :call Close_current_buf()<CR>
+nmap <Leader>bd :bd<CR>
 
 "vertical partition window
 nmap <Leader>wv <Esc>:vs<CR>
