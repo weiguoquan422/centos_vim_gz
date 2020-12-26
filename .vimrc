@@ -12,7 +12,6 @@ set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set fileformats=unix,dos
 set fileformat=unix
 
-
 "about search and display
 "ingnore case when searching with /
 set ic
@@ -33,8 +32,6 @@ set wildmenu
 set hidden
 "allow use mouse
 set mouse=a
-"dont change directory when open a file
-set noautochdir
 
 
 "about mapping and Leader
@@ -49,8 +46,6 @@ vmap <Leader>p "+p
 "alt+right/left to move between buffers
 nmap <A-right> <Esc>:bn<CR>
 nmap <A-left> <Esc>:bp<CR>
-"search for visually selected text
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 "close current buffer
 nmap <Leader>bd :bd<CR>
@@ -59,9 +54,6 @@ nmap <Leader>bd :bd<CR>
 nmap <Leader>wv <Esc>:vs<CR>
 "close current window
 nmap <Leader>wd <Esc>:q<CR>
-"search for word under the cursor but not jump next match
-nnoremap * :keepjumps normal! mi*`i<CR>
-
 
 
 "about indent
@@ -116,6 +108,16 @@ Plug 'luochen1990/rainbow'
 Plug 'WeiChungWu/vim-SystemVerilog'
 "CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
+"git
+Plug 'lambdalisue/gina.vim'
+"gitgutter--dispaly git diff in gutter
+Plug 'airblade/vim-gitgutter'
+"align text by some character
+Plug 'junegunn/vim-easy-align'
+"machakann/vim-sandwich
+Plug 'machakann/vim-sandwich'
+"weiguoquan422/vim-startsearch:search for word under the cursor but not jump next match, and add the word to search history
+Plug 'weiguoquan422/vim-starsearch'
 
 
 " Initialize plugin system
@@ -152,9 +154,41 @@ nmap <leader>ca <plug>NERDCommenterAltDelims
 let g:NERDAltDelims_c = 1
 
 
+"about gitgutter
+"disable default key
+let g:gitgutter_map_keys = 0
+"exceeded maximum number of signs,default = 500
+let g:gitgutter_max_signs = 3000
+"jump between hunks
+nmap ]n <Plug>(GitGutterNextHunk)
+nmap [n <Plug>(GitGutterPrevHunk)
+
+
+"about Gina
+"Gina diff
+nmap <leader>gd :Gina diff<CR>
+"Gina status
+nmap <leader>gs :Gina status<CR>
+"Gina commit
+nmap <leader>gc :Gina commit<CR>
+"Gina log
+nmap <leader>gl :Gina log<CR>
+
+
 "about startify
 "dont allow startify change to dir when open a file
 let g:startify_change_to_dir = 0
+
+
+"about rainbow
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+
+"vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 
 "CtrlP
@@ -164,8 +198,6 @@ nmap <leader>sf :CtrlPLine<CR>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 "chang mapping to invoke CtrlP
 let g:ctrlp_map = '<leader>ff'
-"ctrlp dont change dir when open a file
-let g:ctrlp_working_path_mode = 'w'
 "Use this to customize the mappings inside CtrlP's prompt to your liking. You only need to keep the lines that you've changed the values (inside []) 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtBS()':              ['<bs>', '<c-]>'],
@@ -203,6 +235,22 @@ let g:ctrlp_prompt_mappings = {
   \ 'OpenMulti()':          ['<c-o>'],
   \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
   \ }
+
+
+"sandwich
+let g:sandwich_no_default_key_mappings = 1
+silent! nmap <unique><silent> gd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+silent! nmap <unique><silent> gdb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+
+let g:operator_sandwich_no_default_key_mappings = 1
+" add
+silent! map <unique> <Leader>sa <Plug>(operator-sandwich-add)
+" delete
+silent! xmap <unique> <Leader>sd <Plug>(operator-sandwich-delete)
+" replace
+silent! xmap <unique> <Leader>sr <Plug>(operator-sandwich-replace)
 
 
 "color scheme
