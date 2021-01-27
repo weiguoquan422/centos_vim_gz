@@ -33,6 +33,12 @@ set hidden
 "allow use mouse
 set mouse=a
 
+"about fold
+set viewoptions=cursor,folds,slash,unix
+set foldmethod=manual
+set foldlevel=99
+set foldenable
+
 
 "about mapping and Leader
 "<Leader> is ';'
@@ -109,7 +115,7 @@ Plug 'WeiChungWu/vim-SystemVerilog'
 "CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 "git
-Plug 'lambdalisue/gina.vim'
+Plug 'tpope/vim-fugitive'
 "gitgutter--dispaly git diff in gutter
 Plug 'airblade/vim-gitgutter'
 "align text by some character
@@ -198,8 +204,6 @@ nmap <leader>sf :CtrlPLine<CR>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 "chang mapping to invoke CtrlP
 let g:ctrlp_map = '<leader>ff'
-"ctrlp dont change dir when open a file
-let g:ctrlp_working_path_mode = 'w'
 "Use this to customize the mappings inside CtrlP's prompt to your liking. You only need to keep the lines that you've changed the values (inside []) 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtBS()':              ['<bs>', '<c-]>'],
@@ -262,9 +266,3 @@ set background=dark
 "enable syntax
 syntax enable
 
-
-"Code folding based on indent
-"set foldmethod=indent
-set foldmethod=syntax
-"Close the folding code when you start vim
-set nofoldenable
