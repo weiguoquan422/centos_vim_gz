@@ -261,7 +261,7 @@ silent! xmap <unique> <Leader>sr <Plug>(operator-sandwich-replace)
 
 "color scheme
 colorscheme gruvbox
-set background=dark
+set background=light
 
 "enable syntax
 syntax enable
