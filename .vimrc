@@ -170,15 +170,13 @@ nmap ]n <Plug>(GitGutterNextHunk)
 nmap [n <Plug>(GitGutterPrevHunk)
 
 
-"about Gina
-"Gina diff
-nmap <leader>gd :Gina diff<CR>
-"Gina status
-nmap <leader>gs :Gina status<CR>
-"Gina commit
-nmap <leader>gc :Gina commit<CR>
-"Gina log
-nmap <leader>gl :Gina log<CR>
+"about fugitive
+"fugitive diff
+nmap <leader>gd :!git diff %<CR>
+"fugitive status
+nmap <leader>gs :Git status<CR>
+"fugitive log
+nmap <leader>gl :Git log<CR>
 
 
 "about startify
