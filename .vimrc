@@ -73,6 +73,8 @@ set tabstop=4
 set shiftwidth=4
 "Treat a contiguous number of Spaces as a TAB
 set softtabstop=4
+"set *.vh filetype=systemverilog
+autocmd BufRead,BufNewFile *.vh set filetype=systemverilog
 
 
 
