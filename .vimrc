@@ -126,6 +126,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 "weiguoquan422/vim-startsearch:search for word under the cursor but not jump next match, and add the word to search history
 Plug 'weiguoquan422/vim-starsearch'
+"bookmark
+Plug 'AndrewRadev/simple_bookmarks.vim'
 
 
 " Initialize plugin system
