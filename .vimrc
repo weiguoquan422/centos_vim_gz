@@ -126,8 +126,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'machakann/vim-sandwich'
 "weiguoquan422/vim-startsearch:search for word under the cursor but not jump next match, and add the word to search history
 Plug 'weiguoquan422/vim-starsearch'
-"bookmark
-Plug 'AndrewRadev/simple_bookmarks.vim'
 
 
 " Initialize plugin system
@@ -261,13 +259,6 @@ silent! map <unique> <Leader>sa <Plug>(operator-sandwich-add)
 silent! xmap <unique> <Leader>sd <Plug>(operator-sandwich-delete)
 " replace
 silent! xmap <unique> <Leader>sr <Plug>(operator-sandwich-replace)
-
-
-"bookmark
-nmap mm <Esc>:Bookmark here<CR>
-nmap md <Esc>:DelBookmark here<CR>
-nmap mp <Esc>:GotoBookmark here<CR>
-nmap mc <Esc>:CopenBookmarks<CR>
 
 
 "color scheme
