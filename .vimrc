@@ -263,6 +263,13 @@ silent! xmap <unique> <Leader>sd <Plug>(operator-sandwich-delete)
 silent! xmap <unique> <Leader>sr <Plug>(operator-sandwich-replace)
 
 
+"bookmark
+nmap mm <Esc>:Bookmark here<CR>
+nmap md <Esc>:DelBookmark here<CR>
+nmap mp <Esc>:GotoBookmark here<CR>
+nmap mc <Esc>:CopenBookmarks<CR>
+
+
 "color scheme
 colorscheme gruvbox
 set background=light
