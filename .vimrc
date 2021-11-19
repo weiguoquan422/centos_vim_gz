@@ -117,7 +117,6 @@ Plug 'WeiChungWu/vim-SystemVerilog'
 "CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 "git
-Plug 'tpope/vim-fugitive'
 "gitgutter--dispaly git diff in gutter
 Plug 'airblade/vim-gitgutter'
 "align text by some character
@@ -172,13 +171,10 @@ nmap ]n <Plug>(GitGutterNextHunk)
 nmap [n <Plug>(GitGutterPrevHunk)
 
 
-"about fugitive
-"fugitive diff
+"about git
 nmap <leader>gd :!git diff %<CR>
-"fugitive status
-nmap <leader>gs :Git status<CR>
-"fugitive log
-nmap <leader>gl :Git log<CR>
+nmap <leader>gs :!git status<CR>
+nmap <leader>gl :!git log<CR>
 
 
 "about startify
