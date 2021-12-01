@@ -158,7 +158,7 @@ vmap <leader>cl <plug>NERDCommenterToggle
 "switch comment style
 nmap <leader>ca <plug>NERDCommenterAltDelims
 "set c default delimiter // not /**  */
-let g:NERDAltDelims_c = 0
+let g:NERDAltDelims_c = 1
 
 
 "about gitgutter
